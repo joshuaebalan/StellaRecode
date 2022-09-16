@@ -11,8 +11,21 @@ This is kept in the program as a RESEVOIR object. It has the following properite
 1. The level("value") of the resevoir.
 2. An array of all flows that positively contribute to the value.
 3. An array of all flows that negatively contribute to the value.
-4. A function that has the net flow to the resevoir to be used upon model execution.
+4. A function that has the net flow to the resevoir to be used upon model execution. Think of this as a mathematical function to be applied every time step(simulated second).
 
 ### Flows:
+Flows are "pipes" between resevoirs, by flowing between 2 resevoirs. Examples of this in climate modelling would be things like rain, sunlight energy, migration, etc. 
+
+This is kept in a FLOW object. Its only property is the rate of flow, which is always positive - other steps in the problem determine which side drains and which side fills.
+
+**Note: This operation can have as many operands as needed. For example, a flow can be determined by how "full" a resevoir is. A real-life example of this is the amount of water draining from a tub - the rate decreases when the tub nears empty.**
+
 
 ### Constants:
+"Constants" is a bit of a misnomer - becuase equations have a lot of complex dependencies, "constants" are equations unto themselves that can be linked to flow rates and resevoirs to assist in computation. Some can be literal constants, such as the mass of an object, but others are variable, like the albedo(light reflectivity) of a planet, which can be variable based on cloud cover and composition. That albedo could potentially assist in energy retention calculations for a given planet under the effect of a star.
+
+##Other Functions:
+1. Output: spreadsheets, graphs, etc.(TBD)
+2. Input(prompting)
+3. Programmer's implementation - making into a library
+4. Unit conversion support
