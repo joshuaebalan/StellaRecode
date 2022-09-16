@@ -1,27 +1,32 @@
 #ifndef STELLA_H
 #define STELLA_H
 
-/* #includes */
+/* Preprocessor Stuff */
 #include <assert.h>
 #include <malloc.h>
+#define OK (0);
+#define ERR (-1);
+#define BAD_PARAM (-2);
+#define FLO (1);
+#define CONST (2);
+#define RES (3);
 
 /* Functions */
-int create_flow(float, void*);
+int create_flow(void*);
 int create_resevoir(float);
 int create_constant(float, void*);
 int LINK_TO(void *, void*);
 int function_builder();
-
+int add(void*, int);
 /* Structures */
 typedef struct resevoir_t {
   float VALUE; //CURRENT amount in the resevoir;
-  FLOW **FLOWS_IN; //Array of all POSITIVE flows into the resevoir
-  FLOW **FLOWS_OUT; //Array of all NEGATIVE flows out of the resevoir
+  struct flow_t **FLOWS_IN; //Array of all POSITIVE flows into the resevoir
+  struct flow_t **FLOWS_OUT; //Array of all NEGATIVE flows out of the resevoir
   void *NET_FLOW; //Function of the net flow affecting this resevoir
 } RESEVOIR;
 
 typedef struct flow_t {
-  float THROUGH_RATE; //Constant rate of flow if applicable
   void *FLOW_FUNCT; // Function of rate of flow in seconds
 } FLOW;
 
@@ -38,9 +43,7 @@ typedef struct constant_t {
   struct resevoir_t** CONNECTED_RESEVOIRS;
 } CONSTANT; 
 /* Constants */
-FLOW **FLOW_LIST; //Array of all flows in the scheme
-RESEVOIR **RESEVOIR_LIST; //Array of all resevoirs in this scheme
-CONSTANT **CONSTANT_LIST; //Array of all resevoirs in this scheme
-#define DONE (0);
-#define ERR (-1);
+struct flow_t **FLOW_LIST; //Array of all flows in the scheme
+struct resevoir_t **RESEVOIR_LIST; //Array of all resevoirs in this scheme
+struct constant_t **CONSTANT_LIST; //Array of all resevoirs in this scheme
 #endif //STELLA_H
