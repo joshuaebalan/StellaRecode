@@ -44,4 +44,3 @@ int create_constant(float val; void *custom_rate) {
   return OK;
 }
 
-

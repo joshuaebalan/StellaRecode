@@ -38,8 +38,9 @@ typedef struct constant_t {
   struct resevoir_t** CONNECTED_RESEVOIRS;
 } CONSTANT; 
 /* Constants */
-FLOW **FLOW_LIST; //List of all flows in the scheme
-RESEVOIR **RESEVOIR_LIST; //List of all resevoirs in this scheme
+FLOW **FLOW_LIST; //Array of all flows in the scheme
+RESEVOIR **RESEVOIR_LIST; //Array of all resevoirs in this scheme
+CONSTANT **CONSTANT_LIST; //Array of all resevoirs in this scheme
 #define DONE (0);
 #define ERR (-1);
 #endif //STELLA_H
