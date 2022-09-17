@@ -4,22 +4,25 @@
 /* Preprocessor Stuff */
 #include <assert.h>
 #include <malloc.h>
-#define OK (0);
-#define ERR (-1);
-#define BAD_PARAM (-2);
-#define FLO (1);
-#define CONST (2);
-#define RES (3);
+#include <string.h>
+#define OK            (0)
+#define ERR           (-1)
+#define BAD_PARAM     (-2)
+#define FLO           (1)
+#define CONST         (2)
+#define RES           (3)
+#define MAX_NAME      (100)
 
 /* Functions */
-int create_flow(void*);
-int create_resevoir(float);
-int create_constant(float, void*);
+int create_flow(void*, char*);
+int create_resevoir(float, char*);
+int create_constant(float, void*, char*);
 int LINK_TO(void *, void*);
 int function_builder();
 int add(void*, int);
 /* Structures */
 typedef struct resevoir_t {
+  char *NAME;
   float VALUE; //CURRENT amount in the resevoir;
   struct flow_t **FLOWS_IN; //Array of all POSITIVE flows into the resevoir
   struct flow_t **FLOWS_OUT; //Array of all NEGATIVE flows out of the resevoir
@@ -27,6 +30,7 @@ typedef struct resevoir_t {
 } RESEVOIR;
 
 typedef struct flow_t {
+  char *NAME;
   void *FLOW_FUNCT; // Function of rate of flow in seconds
 } FLOW;
 
@@ -37,6 +41,7 @@ typedef struct tree_t {
 } TREE_NODE;
 
 typedef struct constant_t {
+  char *NAME;
   float value;
   void * VALUE_FUNCT;
   struct flow_t** CONNECTED_FLOWS;
