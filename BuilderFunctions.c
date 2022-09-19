@@ -1,4 +1,5 @@
 #include "StellaRecode.h"
+
 /**
  * Initializes a new RESEVOIR object, given a provided initial value.
  * WARNING: AFTER EXECUTING, THIS RESEVOIR EXISTS BUT IS NOT CONNECTED TO ANYTHING!
@@ -6,7 +7,7 @@
  */
 
 int create_resevoir(float new_value, char* name) {
-  RESEVOIR *new_resevoir = malloc(28);
+  RESEVOIR *new_resevoir = malloc(sizeof(struct resevoir_t));
   assert(new_resevoir != NULL);
   char *NAME_FIELD = malloc(MAX_NAME);
   assert(NAME_FIELD != NULL);
@@ -16,6 +17,7 @@ int create_resevoir(float new_value, char* name) {
   new_resevoir->FLOWS_IN = NULL;
   new_resevoir->FLOWS_OUT = NULL;
   new_resevoir->NET_FLOW = NULL;
+  new_resevoir->CONNECTED_CONSTANTS = NULL;
   int x = add(new_resevoir, RES);
   return x;
 }
@@ -44,8 +46,6 @@ int create_constant(float new_value, void *custom_rate, char *name) {
 /**
  * Adds a new structure to an array of structures, compatible with all types..
  */
-
-
 
 int add(void *new, int mode) {
   if (mode == CONST) {
@@ -103,7 +103,13 @@ int create_flow(void *flow_rate, char* name) {
   strncpy(NAME_FIELD, name, MAX_NAME);
   new_flow->FLOW_FUNCT = flow_rate;
   new_flow->NAME = NAME_FIELD;
+  new_flow->CONNECTED_CONSTANTS = NULL;
   int x = add(new_flow, FLO); 
   return x;
+}
+
+int LINK_TO(void *one, void* two, int MODE) {
+  
+  return OK;
 }
 

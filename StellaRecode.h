@@ -12,12 +12,15 @@
 #define CONST         (2)
 #define RES           (3)
 #define MAX_NAME      (100)
+#define CONST>RES
+#define FLOW>RES
+
 
 /* Functions */
 int create_flow(void*, char*);
 int create_resevoir(float, char*);
 int create_constant(float, void*, char*);
-int LINK_TO(void *, void*);
+int LINK_TO(void *, void*, MODE);
 int function_builder();
 int add(void*, int);
 /* Structures */
@@ -27,11 +30,14 @@ typedef struct resevoir_t {
   struct flow_t **FLOWS_IN; //Array of all POSITIVE flows into the resevoir
   struct flow_t **FLOWS_OUT; //Array of all NEGATIVE flows out of the resevoir
   void *NET_FLOW; //Function of the net flow affecting this resevoir
+  struct constant_t **CONNECTED_CONSTANTS;
 } RESEVOIR;
 
 typedef struct flow_t {
   char *NAME;
   void *FLOW_FUNCT; // Function of rate of flow in seconds
+  struct resevoir_t **CONNECTED_RESEVOIRS;
+  struct constant_t **CONNECTED_CONSTANTS;
 } FLOW;
 
 typedef struct tree_t {
