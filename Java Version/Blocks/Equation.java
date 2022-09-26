@@ -1,5 +1,9 @@
 import java.util.ArrayList;
 public class Equation {
+    public Equation (ArrayList<Char> operations, ArrayList<Float> operands) {
+        this.operands = operands;
+        this.operations = operations;
+    }
     public ArrayList<char[]> getOperations() {
         return operations;
     }
