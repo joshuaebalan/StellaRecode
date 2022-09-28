@@ -24,7 +24,7 @@ public class Equation {
 
     private ArrayList<Float[]> operands;
     private ArrayList<Char[]> operations;
-    private ArrayList<Integer> variableTables;
+    private ArrayList<Equation> variableTables;
 
 
 }

@@ -32,18 +32,19 @@ public class Builders {
         String[] splitInput = input.split(" ");
         ArrayList<float> operands = new ArrayList<>();
         ArrayList<char> operations = new ArrayList<>();
-        ArrayList<Integer> variableTables = new ArrayList<>();
+        ArrayList<Equation> variableTables = new ArrayList<>();
         for (int i = 0; i < splitInput.length; i++) {
             if (splitInput[i].isNumeric) {
                 operands.add(Float.parseFloat(splitInput[i]))
             }
             else if (splitInput[i].charAt[0] = '~') {
-                float NewSymbol = symbolConverter(splitInput[i].substring(1, splitInput[i].length), scheme);
-                operands.add(NewSymbol);
+                Equation NewSymbol = symbolConverter(splitInput[i].substring(1, splitInput[i].length), scheme);
+                operands.add(ESCAPE_KEY); //todo: assign this
                 variableTables.add(i);
             }
             else if (splitInput[i].charAt[0] = '(') {
                 //TODO: figure this out
+                //method ------> treat this as a new Equation and unravel that way
             }
             else {
                 if (strlen(splitInput[i]) != 1) {
@@ -55,8 +56,14 @@ public class Builders {
         return new Equation(operations, operands, variableTables);
     }
     public float symbolConverter(String symbol, Scheme scheme) throws InvalidExpressionException {
-        for (int i = 0; i < scheme; i++) { //checks constants first
-            if ()
+        for (int i = 0; i < scheme.constants.size(); i++) { //checks constants first
+            if (scheme.constants.get(i).equals(symbol)) {
+
+            }
         }
+    }
+
+    public Equation optimize(Equation eq) {
+        return eq;
     }
 }
