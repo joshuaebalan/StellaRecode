@@ -24,7 +24,7 @@ public class BackOfTheNapkin {
         return returned;
     }
 
-    public VALUE[] SOLVE(Equation[] sorted, double TIME) {
+    public VALUE[] SOLVE(Constant[] sorted, double TIME) {
         VALUE[] vals = new VALUE[sorted.length];
         for (int i = 0; i < sorted.length; i++) {
 

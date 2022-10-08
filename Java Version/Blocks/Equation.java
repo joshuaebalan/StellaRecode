@@ -5,6 +5,7 @@ public class Equation {
         this.operations = operations;
         this.variableTables = variableTables;
         numDependancies = variableTables.size();
+        SOLVEDVAL = 0.0;
     }
     public ArrayList<char[]> getOperations() {
         return operations;
@@ -22,9 +23,14 @@ public class Equation {
         this.operations = operations;
     }
 
+    public void setSOLVEDVAL(double solvedval) {
+        this.SOLVEDVAL = solvedval;
+    }
+
     private ArrayList<Float[]> operands;
     private ArrayList<Char[]> operations;
     private int numDependancies;
+    private double SOLVEDVAL;
     private ArrayList<Equation> variableTables;
 
 
