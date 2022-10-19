@@ -1,5 +1,5 @@
 public class Constant {
-    public Cosntant (String name) {
+    public Constant (String name) {
         this.name = name;
         value = null;
     }

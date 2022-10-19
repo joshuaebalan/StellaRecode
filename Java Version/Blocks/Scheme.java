@@ -1,7 +1,7 @@
 import java.util.Arraylist;
 public class Scheme {
 
-    public Scheme(constants, flows, resevoirs) {
+    public Scheme(Arraylist<Constant> constants, ArrayList<Flow> flows, ArrayList<Resevoir> resevoirs) {
         this.constants = constants;
         this.flows = flows;
         this.resevoirs = resevoirs;

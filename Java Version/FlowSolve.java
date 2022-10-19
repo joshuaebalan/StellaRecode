@@ -1,7 +1,7 @@
 public class FlowSolve implements Runnable () {
     FlowSolve fs = new FLowSolve();
 
-    public void run(Equation eq, VALUE vals) {
+    //public void run(Equation eq, VALUE vals) {
          while (!eq.operations.isEmpty) {//confident in this since no other types can be operands
             double o1 = (double)eq.operations.pop();
             double o2 = (double)eq.operations.pop();
@@ -37,5 +37,5 @@ public class FlowSolve implements Runnable () {
          else {
              throw new InvalidExpressionException; //bad ratio of operands to operations
          }
-    }
+    //}
 }
